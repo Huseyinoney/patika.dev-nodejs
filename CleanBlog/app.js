@@ -44,7 +44,12 @@ app.post("/post", async (req, res) => {
     res.redirect("/");
 });
 
-
+app.get("/post/:id" , async (req,res) => {
+    const post =  await Post.findById(req.params.id);
+    res.render("post" , {
+        post,
+    });
+});
 
 const port = 3000;
 app.listen(port, () => {
